@@ -1,67 +1,38 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Site Roxo SPA</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <nav class="navbar">
-    <a href="#" class="logo">Site<span style="color:#fff">Roxo</span></a>
-    <button id="hamburger" class="hamburger">&#9776;</button>
-    <div class="nav-links" id="navLinks">
-      <a onclick="showSection('inicio')">Início</a>
-      <a onclick="showSection('sobre')">Sobre</a>
-      <a onclick="showSection('servicos')">Serviços</a>
-      <a onclick="showSection('contato')">Contato</a>
-      <button id="themeButton" class="theme-toggle" onclick="toggleTheme()">🌙</button>
-    </div>
-  </nav>
+function showSection(id) {
+  const sections = document.querySelectorAll('main section');
+  const newSection = document.getElementById(id);
 
-  <main>
-    <section id="inicio" class="active">
-      <h2>Bem-vindo ao Site Roxo</h2>
-      <p>Este é um exemplo de site com tema claro e escuro, com um toque de roxo vibrante.</p>
-      <button class="btn" onclick="showSection('servicos')">Conheça os serviços</button>
-    </section>
+  sections.forEach(section => {
+    section.classList.remove('active');
+  });
 
-    <section id="sobre">
-      <h2>Sobre Nós</h2>
-      <p>Somos uma equipe apaixonada por design e tecnologia. Usamos o roxo para representar criatividade e inovação.</p>
-    </section>
+  newSection.classList.add('active');
 
-    <section id="servicos">
-      <h2>Serviços</h2>
-      <ul>
-        <li>Design Web</li>
-        <li>Identidade Visual</li>
-        <li>Marketing Digital</li>
-      </ul>
-    </section>
+  // Fecha o menu hamburguer após clique
+  const nav = document.getElementById('navLinks');
+  nav.classList.remove('open');
+}
 
-    <section id="contato">
-      <h2>Contato</h2>
-      <form>
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required>
+function toggleTheme() {
+  const body = document.body;
+  const button = document.getElementById('themeButton');
+  body.classList.toggle('dark-mode');
+  const isDark = body.classList.contains('dark-mode');
+  button.textContent = isDark ? '☀️' : '🌙';
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+window.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  const button = document.getElementById('themeButton');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    button.textContent = '☀️';
+  }
+});
 
-        <label for="mensagem">Mensagem:</label>
-        <textarea id="mensagem" name="mensagem" required></textarea>
-
-        <br><br>
-        <button class="btn" type="submit">Enviar</button>
-      </form>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Site Roxo. Todos os direitos reservados.</p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+// Abre/fecha menu mobile
+document.getElementById('hamburger').addEventListener('click', () => {
+  const nav = document.getElementById('navLinks');
+  nav.classList.toggle('open');
+});
