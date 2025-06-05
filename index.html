@@ -10,13 +10,13 @@
   <nav class="navbar">
     <a href="#" class="logo">Site<span style="color:#fff">Roxo</span></a>
 
-    <div id="hamburger" class="hamburger">
+    <div class="hamburger" onclick="toggleMenu()">
       <span></span>
       <span></span>
       <span></span>
     </div>
 
-    <div id="navLinks" class="nav-links">
+    <div class="nav-links" id="navLinks">
       <a onclick="showSection('inicio')">Início</a>
       <a onclick="showSection('sobre')">Sobre</a>
       <a onclick="showSection('servicos')">Serviços</a>
@@ -26,42 +26,44 @@
   </nav>
 
   <main>
-    <section id="inicio" class="active">
-      <h2>Bem-vindo ao Site Roxo</h2>
-      <p>Este é um exemplo de site com tema claro e escuro, com um toque de roxo vibrante.</p>
-      <button class="btn" onclick="showSection('servicos')">Conheça os serviços</button>
-    </section>
+    <div class="sections-wrapper">
+      <section id="inicio">
+        <h2>Bem-vindo ao Site Roxo</h2>
+        <p>Este é um exemplo de site com tema claro e escuro, com um toque de roxo vibrante.</p>
+        <button class="btn" onclick="showSection('servicos')">Conheça os serviços</button>
+      </section>
 
-    <section id="sobre">
-      <h2>Sobre Nós</h2>
-      <p>Somos uma equipe apaixonada por design e tecnologia. Usamos o roxo para representar criatividade e inovação.</p>
-    </section>
+      <section id="sobre">
+        <h2>Sobre Nós</h2>
+        <p>Somos uma equipe apaixonada por design e tecnologia. Usamos o roxo para representar criatividade e inovação.</p>
+      </section>
 
-    <section id="servicos">
-      <h2>Serviços</h2>
-      <ul>
-        <li>Design Web</li>
-        <li>Identidade Visual</li>
-        <li>Marketing Digital</li>
-      </ul>
-    </section>
+      <section id="servicos">
+        <h2>Serviços</h2>
+        <ul>
+          <li>Design Web</li>
+          <li>Identidade Visual</li>
+          <li>Marketing Digital</li>
+        </ul>
+      </section>
 
-    <section id="contato">
-      <h2>Contato</h2>
-      <form>
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required>
+      <section id="contato">
+        <h2>Contato</h2>
+        <form>
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" required>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
 
-        <label for="mensagem">Mensagem:</label>
-        <textarea id="mensagem" name="mensagem" required></textarea>
+          <label for="mensagem">Mensagem:</label>
+          <textarea id="mensagem" name="mensagem" required></textarea>
 
-        <br><br>
-        <button class="btn" type="submit">Enviar</button>
-      </form>
-    </section>
+          <br><br>
+          <button class="btn" type="submit">Enviar</button>
+        </form>
+      </section>
+    </div>
   </main>
 
   <footer>
