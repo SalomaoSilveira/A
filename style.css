@@ -29,6 +29,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
+  position: relative;
 }
 
 .logo {
@@ -36,6 +37,16 @@ body {
   font-weight: bold;
   color: white;
   text-decoration: none;
+}
+
+/* Menu hamburguer */
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
 }
 
 .nav-links {
@@ -80,7 +91,7 @@ main {
   padding: 0 2rem;
 }
 
-/* Animação de fade nas seções */
+/* Animação de fade e movimento */
 section {
   display: block;
   opacity: 0;
@@ -151,9 +162,26 @@ footer {
   margin-top: 2rem;
 }
 
+/* Responsividade e menu mobile */
 @media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
   .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: var(--primary-color);
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
+    width: 200px;
+    padding: 1rem;
+    gap: 0.5rem;
+    display: none;
+  }
+
+  .nav-links.open {
+    display: flex;
   }
 }
