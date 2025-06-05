@@ -1,7 +1,14 @@
 function showSection(id) {
   const sections = document.querySelectorAll('main section');
-  sections.forEach(section => section.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+  const newSection = document.getElementById(id);
+
+  sections.forEach(section => {
+    if (section === newSection) {
+      section.classList.add('active');
+    } else {
+      section.classList.remove('active');
+    }
+  });
 }
 
 function toggleTheme() {
