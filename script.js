@@ -1,15 +1,18 @@
-function showSection(id) {
-  const sections = document.querySelectorAll('main section');
-  sections.forEach(section => {
-    section.classList.remove('active');
-  });
-  document.getElementById(id).classList.add('active');
+let currentIndex = 0;
+const sectionsWrapper = document.querySelector('.sections-wrapper');
+const sections = document.querySelectorAll('section');
 
-  // Fecha o menu lateral se estiver aberto
-  const nav = document.getElementById('navLinks');
-  const hamburger = document.getElementById('hamburger');
-  nav.classList.remove('open');
-  hamburger.classList.remove('active');
+function showSection(id) {
+  const sectionIds = Array.from(sections).map(sec => sec.id);
+  const targetIndex = sectionIds.indexOf(id);
+  if (targetIndex !== -1) {
+    currentIndex = targetIndex;
+    sectionsWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  // Fecha o menu no mobile
+  document.getElementById('navLinks').classList.remove('open');
+  document.querySelector('.hamburger').classList.remove('active');
 }
 
 function toggleTheme() {
@@ -21,19 +24,18 @@ function toggleTheme() {
   localStorage.setItem('theme', isDark ? 'dark' : 'light');
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function toggleMenu() {
+  const nav = document.getElementById('navLinks');
+  const burger = document.querySelector('.hamburger');
+  nav.classList.toggle('open');
+  burger.classList.toggle('active');
+}
+
+window.addEventListener('DOMContentLoaded', () => {
   const savedTheme = localStorage.getItem('theme');
   const button = document.getElementById('themeButton');
   if (savedTheme === 'dark') {
     document.body.classList.add('dark-mode');
     button.textContent = '☀️';
   }
-
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('open');
-  });
 });
