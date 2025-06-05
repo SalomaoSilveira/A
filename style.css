@@ -15,11 +15,13 @@ body.dark-mode {
   box-sizing: border-box;
 }
 
-body {
+html, body {
   font-family: 'Segoe UI', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow: hidden;
+  height: 100vh;
 }
 
 .navbar {
@@ -43,7 +45,6 @@ body {
 .hamburger {
   display: none;
   flex-direction: column;
-  justify-content: center;
   gap: 5px;
   cursor: pointer;
   height: 24px;
@@ -98,25 +99,24 @@ body {
 }
 
 main {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 2rem;
+  height: calc(100vh - 70px); /* altura total menos navbar */
   overflow: hidden;
-  position: relative;
-  height: 420px;
 }
 
 .sections-wrapper {
   display: flex;
-  transition: transform 0.5s ease-in-out;
   width: 400%;
+  height: 100%;
+  transition: transform 0.6s ease-in-out;
 }
 
 section {
-  min-width: 100%;
-  padding: 1.5rem;
+  width: 100vw;
+  height: 100%;
+  padding: 2rem;
   background-color: #f9f9f9;
   border-left: 5px solid var(--primary-color);
+  overflow-y: auto;
 }
 
 body.dark-mode section {
@@ -164,7 +164,8 @@ footer {
   color: white;
   text-align: center;
   padding: 1rem;
-  margin-top: 2rem;
+  position: relative;
+  z-index: 1000;
 }
 
 @media (max-width: 768px) {
@@ -180,6 +181,7 @@ footer {
     padding: 2rem;
     gap: 1rem;
     transition: right 0.4s ease;
+    z-index: 999;
   }
 
   .nav-links.open {
