@@ -7,10 +7,9 @@ function showSection(id) {
   const targetIndex = sectionIds.indexOf(id);
   if (targetIndex !== -1) {
     currentIndex = targetIndex;
-    sectionsWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+    sectionsWrapper.style.transform = `translateX(-${currentIndex * 100}vw)`;
   }
 
-  // Fecha o menu no mobile
   document.getElementById('navLinks').classList.remove('open');
   document.querySelector('.hamburger').classList.remove('active');
 }
