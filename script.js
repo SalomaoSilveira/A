@@ -1,17 +1,12 @@
-let currentIndex = 0;
-const sectionsWrapper = document.querySelector('.sections-wrapper');
-const sections = document.querySelectorAll('section');
-
 function showSection(id) {
-  const sectionIds = Array.from(sections).map(sec => sec.id);
-  const targetIndex = sectionIds.indexOf(id);
-  if (targetIndex !== -1) {
-    currentIndex = targetIndex;
-    sectionsWrapper.style.transform = `translateX(-${currentIndex * 100}vw)`;
-  }
+  const sections = document.querySelectorAll('main section');
+  const wrapper = document.querySelector('.sections-wrapper');
+  const index = Array.from(sections).findIndex(section => section.id === id);
+  wrapper.style.transform = `translateX(-${index * 100}%)`;
 
-  document.getElementById('navLinks').classList.remove('open');
-  document.querySelector('.hamburger').classList.remove('active');
+  // Fecha menu hambúrguer ao clicar
+  const nav = document.getElementById('navLinks');
+  nav.classList.remove('show');
 }
 
 function toggleTheme() {
@@ -25,9 +20,7 @@ function toggleTheme() {
 
 function toggleMenu() {
   const nav = document.getElementById('navLinks');
-  const burger = document.querySelector('.hamburger');
-  nav.classList.toggle('open');
-  burger.classList.toggle('active');
+  nav.classList.toggle('show');
 }
 
 window.addEventListener('DOMContentLoaded', () => {
