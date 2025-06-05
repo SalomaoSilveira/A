@@ -39,16 +39,22 @@ body {
   text-decoration: none;
 }
 
+/* Hamburguer */
 .hamburger {
   display: none;
-  font-size: 1.8rem;
-  background: none;
-  border: none;
-  color: white;
+  flex-direction: column;
+  gap: 5px;
   cursor: pointer;
 }
 
-/* Menu desktop */
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  display: block;
+  border-radius: 2px;
+}
+
 .nav-links {
   display: flex;
   gap: 1rem;
@@ -91,15 +97,16 @@ main {
   padding: 0 2rem;
 }
 
+/* Animações suaves */
 section {
   opacity: 0;
-  transform: translateY(20px);
+  transform: scale(0.98);
   pointer-events: none;
   margin-bottom: 2rem;
   padding: 1.5rem;
   background-color: #f9f9f9;
   border-left: 5px solid var(--primary-color);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
 
 body.dark-mode section {
@@ -108,7 +115,7 @@ body.dark-mode section {
 
 section.active {
   opacity: 1;
-  transform: translateY(0);
+  transform: scale(1);
   pointer-events: auto;
 }
 
@@ -134,8 +141,7 @@ h2 {
   background: #4b0082;
 }
 
-input,
-textarea {
+input, textarea {
   width: 100%;
   padding: 0.6rem;
   margin-top: 0.4rem;
@@ -160,26 +166,42 @@ footer {
   margin-top: 2rem;
 }
 
-/* Responsividade */
+/* Mobile menu */
 @media (max-width: 768px) {
   .hamburger {
-    display: block;
+    display: flex;
   }
 
   .nav-links {
-    display: none;
     flex-direction: column;
     align-items: flex-start;
     position: absolute;
     top: 70px;
     right: 0;
     background-color: var(--primary-color);
-    padding: 1rem;
     width: 200px;
     z-index: 999;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.3s ease-in-out;
   }
 
   .nav-links.open {
-    display: flex;
+    padding: 1rem;
+    max-height: 400px;
+  }
+
+  .nav-links a,
+  .nav-links .theme-toggle {
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .nav-links.open a,
+  .nav-links.open .theme-toggle {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
