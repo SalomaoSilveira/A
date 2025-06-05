@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Roxo Responsivo</title>
+  <style>
+    :root {
+      --primary-color: #6a0dad;
+      --secondary-color: #ffffff;
+      --text-color: #000000;
+      --bg-color: #ffffff;
+    }
+
+    body.dark-mode {
+      --primary-color: #000000;
+      --secondary-color: #ffffff;
+      --text-color: #ffffff;
+      --bg-color: #000000;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .navbar {
+      background: var(--primary-color);
+      color: var(--secondary-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--secondary-color);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links li {
+      margin-left: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    .nav-links a:hover {
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+    }
+
+    .btn-toggle-theme {
+      background: transparent;
+      color: var(--secondary-color);
+      border: 2px solid var(--secondary-color);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .btn-toggle-theme:hover {
+      background: var(--secondary-color);
+      color: var(--primary-color);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    .hero {
+      background: var(--primary-color);
+      color: var(--secondary-color);
+      text-align: center;
+      padding: 4rem 2rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+
+    .btn {
+      background: var(--secondary-color);
+      color: var(--primary-color);
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: var(--primary-color);
+      color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    section {
+      background: #f0f0f0;
+      padding: 2rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+
+    section h2 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--primary-color);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    footer {
+      background: var(--primary-color);
+      color: var(--secondary-color);
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="logo">Site<span style="color:#fff;">Roxo</span></a>
+
+    <ul class="nav-links">
+      <li><a href="inicio.html">Início</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="servicos.html">Serviços</a></li>
+      <li><a href="contato.html">Contato</a></li>
+      <li>
+        <button class="btn-toggle-theme" onclick="toggleTheme()">Modo Noturno</button>
+      </li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <h1>Bem-vindo ao Site Roxo</h1>
+      <p>Elegância e sofisticação em tons de roxo, com design responsivo e moderno.</p>
+      <a href="servicos.html" class="btn">Ver Serviços</a>
+    </section>
+
+    <section>
+      <h2>Destaque</h2>
+      <p>Este é um exemplo de layout com o tema roxo. Utilize como base para suas páginas futuras.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Site Roxo. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
+</html>
