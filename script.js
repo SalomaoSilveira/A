@@ -9,6 +9,10 @@ function showSection(id) {
       section.classList.remove('active');
     }
   });
+
+  // Fechar menu em mobile após clicar
+  const nav = document.getElementById('navLinks');
+  nav.classList.remove('open');
 }
 
 function toggleTheme() {
@@ -27,4 +31,10 @@ window.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('dark-mode');
     button.textContent = '☀️';
   }
+});
+
+// Toggle do menu hamburguer
+document.getElementById('hamburger').addEventListener('click', () => {
+  const nav = document.getElementById('navLinks');
+  nav.classList.toggle('open');
 });
